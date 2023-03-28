@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet"> -->
+
+    <title>Document</title>
+    <style>
+        
+
+        html {
+            
+            box-sizing: border-box;
+            background:#ffc600;
+            font-family:'helvetica neue';
+            font-size: 20px;
+            font-weight: 200;
+}
+
+        *,*:before,*:after{
+            margin: 0;
+            padding: 0;
+            box-sizing: inherit;
+        }
+        .panels{
+            min-height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+        .panel{
+            background:#6B0F9C;
+            box-shadow:inset 0 0 0 5px rgba(255,255,255,0.1);
+            /* color:rgb(44, 188, 78); */
+            /* text-align: center; */
+            align-items:center;
+            /* Safari transitionend event.propertyName === flex */
+            /* Chrome + FF transitionend event.propertyName === flex-grow */
+            transition:
+                font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+                flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+                background 0.2s;
+            font-size: 20px;
+            background-size:cover;
+            background-position:center;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        .panel1 { 
+            background-image:url(https://unsplash.it/1500/1500/?image=1081); 
+        }
+        .panel2 { 
+            background-image:url(https://unsplash.it/1500/1500/?image=1075); 
+        }
+        .panel3 { 
+            background-image:url(https://unsplash.it/1500/1500/?image=1067); 
+        }
+        .panel4 { 
+            background-image:url(https://unsplash.it/1500/1500/?image=1048); 
+        }
+        .panel5 { 
+            background-image:url(https://unsplash.it/1500/1500/?image=945); 
+        }
+
+       .panel > *:first-child {
+            transform: translateY(-100%);
+        }
+        
+        .panel.open-active> *:first-child{
+            transform: translateY(0);
+        }
+        .panel.open-active> *:last-child{
+            transform: translateY(0);
+        }
+
+        .panel > *:last-child{
+            transform: translateY(100%);
+        }
+        .panel > * {
+            margin:0;
+            width: 100%;
+            transition:transform 0.5s;
+            flex: 1 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .panel p{
+            color: aliceblue;
+            text-transform: uppercase;
+            font-family: 'Bitter', cursive;
+            text-shadow:0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+            font-size: 3em;
+        }
+
+        .panel p:nth-child(2) {
+            font-size: 6em;
+        }
+        .panel.open {
+            flex: 4;
+            font-size: 40px;
+        }
+
+        
+    </style>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alkatra&display=swap" rel="stylesheet">
+<body>
+    <div class="panels">
+        <div class="panel panel1">
+        <p>HEY</p>
+        <p>LETS</p>
+        <p>DANCE</p>
+
+        </div>
+        <div class="panel panel2">
+        <p>MY</p>
+        <p>ALL</p>
+        <p>FRIENDS</p>
+        </div>
+        <div class="panel panel3">
+        <p>YOU</p>
+        <p>GO</p>
+        <p>FIRST</p>
+        </div>
+        <div class="panel panel4">
+        <p>SLOW</p>
+        <p>AND</p>
+        <p>STEADY</p>
+        </div>
+        <div class="panel panel5">
+        <p>WIN</p>
+        <p>ENJOY</p>
+        <p>RACE</p>
+        </div>
+    </div>
+
+    <script>
+        const evl=document.querySelectorAll('.panel');
+        evl.forEach(ele=>ele.addEventListener('click',toggleopener));
+        evl.forEach(e=>e.addEventListener('transitionend',toggleactive));
+
+        function toggleactive(e){
+            console.log(e.propertyName);
+
+            if(e.propertyName.includes('flex'))
+            this.classList.toggle('open-active')
+        }
+
+        function toggleopener(){
+            this.classList.toggle('open')
+            
+        }
+    </script>
+</body>
+</html>
